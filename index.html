@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Data - Aplikasi Pembelajaran Interaktif</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">🔍</span>
+                    Analisis Data
+                </h1>
+                <div class="header-controls">
+                    <button id="themeToggle" class="btn-icon" title="Toggle Dark Mode">
+                        <i data-lucide="moon"></i>
+                    </button>
+                    <button id="langToggle" class="btn-icon" title="Toggle Language">
+                        <span class="lang-text">EN</span>
+                    </button>
+                    <div class="teacher-info">
+                        <div class="teacher-name">Subiono Ahmad</div>
+                        <div class="teacher-role">Pengampu Mapel Informatika</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="container">
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-grade="10">⚪ Kelas X (Dasar)</button>
+                <button class="nav-tab" data-grade="11">🔶 Kelas XI (Menengah)</button>
+                <button class="nav-tab" data-grade="12">⚫ Kelas XII (Lanjut)</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+            <!-- Grade 10 Content -->
+            <div id="grade-10" class="grade-content active">
+                <div class="grade-header">
+                    <h2>🎓 Kelas X - Konsep Dasar Data dan Informasi</h2>
+                    <p class="grade-description">📊 Memahami pengertian dan komponen dasar sistem data</p>
+                </div>
+
+                <!-- Module 1: Introduction to Data -->
+                <div class="container">
+                    <div class="module-card">
+                    <div class="module-header">
+                        <h3>📖 Modul 1: Pengantar Data dan Informasi</h3>
+                    </div>
+                    
+                    <!-- Apersepsi -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">🎯 Apersepsi</h4>
+                        <div class="section-content">
+                            <p>Pernahkah kalian memperhatikan grafik cuaca di aplikasi ponsel? Atau melihat diagram hasil survei di media sosial? Semua itu adalah contoh penyajian data dalam kehidupan sehari-hari.</p>
+                            <div class="apersepsi-activity">
+                                <p><strong>Aktivitas Pembuka:</strong> Sebutkan 3 contoh data yang kalian temui hari ini!</p>
+                                <textarea class="activity-input" placeholder="Tuliskan jawaban kalian di sini..." rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pertanyaan Pemantik -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">❓ Pertanyaan Pemantik</h4>
+                        <div class="section-content">
+                            <ul class="question-list">
+                                <li>Apa perbedaan antara data dan informasi?</li>
+                                <li>Mengapa data perlu divisualisasikan?</li>
+                                <li>Bagaimana cara memilih jenis grafik yang tepat untuk data tertentu?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Materi Pembelajaran -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">📚 Materi Pembelajaran</h4>
+                        <div class="section-content">
+                            <div class="learning-content">
+                                <div class="concept-card">
+                                    <h5>💡 Pengertian Data</h5>
+                                    <p>Data adalah sekumpulan fakta, angka, atau informasi yang dikumpulkan untuk analisis. Data dapat berupa angka, teks, gambar, atau suara.</p>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h5>🔄 Jenis-jenis Data</h5>
+                                    <div class="data-types">
+                                        <div class="type-item">
+                                            <strong>🔢 Data Kuantitatif:</strong> Data berupa angka yang dapat diukur (contoh: tinggi badan, nilai ujian)
+                                        </div>
+                                        <div class="type-item">
+                                            <strong>📝 Data Kualitatif:</strong> Data berupa kategori atau kualitas (contoh: warna mata, jenis kelamin)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="interactive-demo">
+                                    <h5>🎮 Demo Interaktif: Input Data dan Visualisasi</h5>
+                                    <div class="data-input-section">
+                                        <div class="input-group">
+                                            <label>Masukkan data nilai siswa (pisahkan dengan koma):</label>
+                                            <input type="text" id="studentGrades" placeholder="85, 78, 92, 76, 88, 95, 82" class="data-input">
+                                        </div>
+                                        <button onclick="createChart('studentGrades', 'gradeChart')" class="btn-primary">Buat Grafik</button>
+                                    </div>
+                                    <div class="chart-container">
+                                        <canvas id="gradeChart"></canvas>
+                                    </div>
+                                    <button onclick="downloadChart('gradeChart')" class="btn-secondary">Unduh Grafik PNG</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latihan Interaktif -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">🎮 Latihan Interaktif</h4>
+                        <div class="section-content">
+                            <!-- Quiz 1 -->
+                            <div class="quiz-container">
+                                <h5>🧩 Kuis 1: Identifikasi Jenis Data</h5>
+                                <div class="quiz-question">
+                                    <p>Manakah dari berikut ini yang termasuk data kuantitatif?</p>
+                                    <div class="quiz-options">
+                                        <label class="quiz-option">
+                                            <input type="radio" name="q1" value="a">
+                                            <span>Warna rambut</span>
+                                        </label>
+                                        <label class="quiz-option">
+                                            <input type="radio" name="q1" value="b">
+                                            <span>Tinggi badan (cm)</span>
+                                        </label>
+                                        <label class="quiz-option">
+                                            <input type="radio" name="q1" value="c">
+                                            <span>Nama siswa</span>
+                                        </label>
+                                        <label class="quiz-option">
+                                            <input type="radio" name="q1" value="d">
+                                            <span>Hobi</span>
+                                        </label>
+                                    </div>
+                                    <button onclick="checkAnswer('q1', 'b', this)" class="btn-primary">✅ Periksa Jawaban</button>
+                                    <div class="quiz-feedback"></div>
+                                </div>
+                            </div>
+
+                            <!-- Drag & Drop Activity -->
+                            <div class="drag-drop-container">
+                                <h5>🎯 Aktivitas Drag & Drop: Klasifikasi Data</h5>
+                                <div class="drag-drop-area">
+                                    <div class="drop-zones">
+                                        <div class="drop-zone" data-type="kuantitatif">
+                                            <h6>🔢 Data Kuantitatif</h6>
+                                            <div class="drop-items"></div>
+                                        </div>
+                                        <div class="drop-zone" data-type="kualitatif">
+                                            <h6>📝 Data Kualitatif</h6>
+                                            <div class="drop-items"></div>
+                                        </div>
+                                    </div>
+                                    <div class="drag-items">
+                                        <div class="drag-item" data-type="kuantitatif">🎂 Umur (tahun)</div>
+                                        <div class="drag-item" data-type="kualitatif">👤 Jenis Kelamin</div>
+                                        <div class="drag-item" data-type="kuantitatif">⚖️ Berat Badan (kg)</div>
+                                        <div class="drag-item" data-type="kualitatif">📖 Mata Pelajaran Favorit</div>
+                                        <div class="drag-item" data-type="kuantitatif">🔢 Nilai Matematika</div>
+                                        <div class="drag-item" data-type="kualitatif">🎨 Warna Kesukaan</div>
+                                    </div>
+                                </div>
+                                <button onclick="checkDragDrop()" class="btn-primary">✅ Periksa Jawaban</button>
+                                <div class="drag-feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Refleksi -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">🤔 Refleksi</h4>
+                        <div class="section-content">
+                            <div class="reflection-questions">
+                                <div class="reflection-item">
+                                    <p><strong>Apa yang telah kalian pelajari hari ini?</strong></p>
+                                    <textarea class="reflection-input" placeholder="Refleksikan pembelajaran kalian..." rows="3"></textarea>
+                                </div>
+                                <div class="reflection-item">
+                                    <p><strong>Bagaimana kalian akan menerapkan pengetahuan ini dalam kehidupan sehari-hari?</strong></p>
+                                    <textarea class="reflection-input" placeholder="Berikan contoh penerapan..." rows="3"></textarea>
+                                </div>
+                                <div class="reflection-item">
+                                    <p><strong>Apa yang masih membingungkan dan ingin kalian pelajari lebih lanjut?</strong></p>
+                                    <textarea class="reflection-input" placeholder="Sebutkan hal yang ingin dipelajari..." rows="3"></textarea>
+                                </div>
+                            </div>
+                            <button onclick="saveReflection(10, 1)" class="btn-primary">💾 Simpan Refleksi</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade 11 Content -->
+            <div id="grade-11" class="grade-content">
+                <div class="grade-header">
+                    <h2>📈 Kelas XI - Penyajian dan Interpretasi Data</h2>
+                    <p class="grade-description">🔍 Mempelajari statistik dasar, analisis data, dan interpretasi hasil untuk pengambilan keputusan.</p>
+                </div>
+
+                <!-- Module 1: Statistics -->
+                <div class="container">
+                    <div class="module-card">
+                    <div class="module-header">
+                        <h3>📊 Modul 1: Statistik Dasar dan Analisis Data</h3>
+                    </div>
+                    
+                    <!-- Apersepsi -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">🎯 Apersepsi</h4>
+                        <div class="section-content">
+                            <p>Saat kalian mendengar "rata-rata nilai kelas adalah 85", apa yang terlintas di pikiran? Bagaimana cara menghitung rata-rata tersebut? Mari kita eksplorasi lebih dalam tentang statistik dasar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pertanyaan Pemantik -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">❓ Pertanyaan Pemantik</h4>
+                        <div class="section-content">
+                            <ul class="question-list">
+                                <li>Kapan menggunakan rata-rata, median, atau modus?</li>
+                                <li>Mengapa statistik penting dalam pengambilan keputusan?</li>
+                                <li>Bagaimana cara menganalisis data yang besar?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Materi Pembelajaran -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">📚 Materi Pembelajaran</h4>
+                        <div class="section-content">
+                            <div class="learning-content">
+                                <div class="concept-card">
+                                    <h5>📐 Statistik Deskriptif</h5>
+                                    <div class="stats-definitions">
+                                        <div class="stat-item">
+                                            <strong>📊 Rata-rata (Mean):</strong> Jumlah semua data dibagi banyaknya data
+                                        </div>
+                                        <div class="stat-item">
+                                            <strong>📍 Median:</strong> Nilai tengah setelah data diurutkan
+                                        </div>
+                                        <div class="stat-item">
+                                            <strong>📈 Modus:</strong> Nilai yang paling sering muncul
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="interactive-calculator">
+                                    <h5>🧮 Kalkulator Statistik Interaktif</h5>
+                                    <div class="calc-input">
+                                        <label>📊 Masukkan data (pisahkan dengan koma):</label>
+                                        <input type="text" id="statsData" placeholder="10, 15, 20, 15, 25, 30, 15" class="data-input">
+                                        <button onclick="calculateStats()" class="btn-primary">⚡ Hitung Statistik</button>
+                                    </div>
+                                    <div id="statsResults" class="stats-results"></div>
+                                    <div class="chart-container">
+                                        <canvas id="statsChart"></canvas>
+                                    </div>
+                                </div>
+
+                                <div class="case-study">
+                                    <h5>📋 Studi Kasus: Analisis Data Pengeluaran Harian Siswa</h5>
+                                    <div class="case-study-data">
+                                        <button onclick="loadCaseStudy()" class="btn-secondary">📁 Muat Data Studi Kasus</button>
+                                        <div id="caseStudyContent" class="case-content hidden">
+                                            <div class="data-table-container">
+                                                <table id="caseStudyTable" class="data-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Hari</th>
+                                                            <th>Pengeluaran (Rp)</th>
+                                                            <th>Kategori</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                            <div class="analysis-results">
+                                                <div id="caseAnalysis"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latihan Interaktif -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">🎮 Latihan Interaktif</h4>
+                        <div class="section-content">
+                            <div class="quiz-container">
+                                <h5>🧩 Kuis: Interpretasi Statistik</h5>
+                                <div class="quiz-question">
+                                    <p>Data nilai ujian: 70, 80, 75, 80, 85, 80, 90. Berapakah modus dari data tersebut?</p>
+                                    <div class="quiz-options">
+                                        <label class="quiz-option">
+                                            <input type="radio" name="q2" value="a">
+                                            <span>75</span>
+                                        </label>
+                                        <label class="quiz-option">
+                                            <input type="radio" name="q2" value="b">
+                                            <span>80</span>
+                                        </label>
+                                        <label class="quiz-option">
+                                            <input type="radio" name="q2" value="c">
+                                            <span>85</span>
+                                        </label>
+                                        <label class="quiz-option">
+                                            <input type="radio" name="q2" value="d">
+                                            <span>90</span>
+                                        </label>
+                                    </div>
+                                    <button onclick="checkAnswer('q2', 'b', this)" class="btn-primary">✅ Periksa Jawaban</button>
+                                    <div class="quiz-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Refleksi -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">🤔 Refleksi</h4>
+                        <div class="section-content">
+                            <div class="reflection-questions">
+                                <div class="reflection-item">
+                                    <p><strong>Bagaimana statistik membantu dalam memahami data?</strong></p>
+                                    <textarea class="reflection-input" placeholder="Refleksikan tentang peran statistik..." rows="3"></textarea>
+                                </div>
+                                <div class="reflection-item">
+                                    <p><strong>Situasi apa dalam kehidupan nyata yang memerlukan analisis statistik?</strong></p>
+                                    <textarea class="reflection-input" placeholder="Berikan contoh situasi..." rows="3"></textarea>
+                                </div>
+                            </div>
+                            <button onclick="saveReflection(11, 1)" class="btn-primary">💾 Simpan Refleksi</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade 12 Content -->
+            <div id="grade-12" class="grade-content">
+                <div class="grade-header">
+                    <h2>🚀 Kelas XII - Pengolahan Data Besar dan Visualisasi Interaktif</h2>
+                    <p class="grade-description">🔬 Mengeksplorasi teknik analisis data lanjutan, visualisasi interaktif, dan korelasi untuk pengambilan keputusan berbasis data.</p>
+                </div>
+
+                <!-- Module 1: Big Data Simulation -->
+                <div class="container">
+                    <div class="module-card">
+                    <div class="module-header">
+                        <h3>💾 Modul 1: Simulasi Pengolahan Data Besar</h3>
+                    </div>
+                    
+                    <!-- Apersepsi -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">🎯 Apersepsi</h4>
+                        <div class="section-content">
+                            <p>Di era digital ini, perusahaan seperti Google, Facebook, dan Netflix memproses jutaan data setiap detik. Bagaimana mereka mengelola data sebesar itu? Mari simulasikan pengolahan data besar!</p>
+                        </div>
+                    </div>
+
+                    <!-- Pertanyaan Pemantik -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">❓ Pertanyaan Pemantik</h4>
+                        <div class="section-content">
+                            <ul class="question-list">
+                                <li>Apa tantangan dalam menganalisis data besar?</li>
+                                <li>Bagaimana cara mencari pola dalam data yang kompleks?</li>
+                                <li>Mengapa visualisasi interaktif penting untuk data besar?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Materi Pembelajaran -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">📚 Materi Pembelajaran</h4>
+                        <div class="section-content">
+                            <div class="learning-content">
+                                <div class="concept-card">
+                                    <h5>🌐 Konsep Big Data</h5>
+                                    <p>Big Data didefinisikan dengan 3V: Volume (besar), Velocity (cepat), dan Variety (beragam). Dalam pembelajaran ini, kita akan mensimulasikan penanganan data dengan karakteristik tersebut.</p>
+                                </div>
+
+                                <div class="big-data-simulator">
+                                    <h5>🖥️ Simulator Data Besar: Analisis Penjualan E-commerce</h5>
+                                    <div class="simulator-controls">
+                                        <button onclick="generateBigData()" class="btn-primary">Generate Dataset (1000 records)</button>
+                                        <div class="filter-controls">
+                                            <select id="categoryFilter" onchange="filterData()">
+                                                <option value="">Semua Kategori</option>
+                                                <option value="Elektronik">Elektronik</option>
+                                                <option value="Fashion">Fashion</option>
+                                                <option value="Makanan">Makanan</option>
+                                                <option value="Buku">Buku</option>
+                                            </select>
+                                            <input type="range" id="priceRange" min="0" max="1000000" value="1000000" oninput="filterData()">
+                                            <span>Harga maksimal: <span id="priceValue">Rp 1.000.000</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="data-overview">
+                                        <div id="dataStats" class="data-stats-grid"></div>
+                                    </div>
+                                    <div class="chart-grid">
+                                        <div class="chart-container">
+                                            <canvas id="salesChart"></canvas>
+                                        </div>
+                                        <div class="chart-container">
+                                            <canvas id="categoryChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="correlation-analysis">
+                                    <h5>📊 Analisis Korelasi Sederhana</h5>
+                                    <div class="correlation-demo">
+                                        <p>Analisis hubungan antara harga produk dan rating pelanggan:</p>
+                                        <button onclick="analyzeCorrelation()" class="btn-secondary">Analisis Korelasi</button>
+                                        <div id="correlationResults" class="correlation-results"></div>
+                                        <div class="chart-container">
+                                            <canvas id="scatterChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latihan Interaktif -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">🎮 Latihan Interaktif</h4>
+                        <div class="section-content">
+                            <div class="advanced-exercise">
+                                <h5>🔍 Eksplorasi Data Interaktif</h5>
+                                <div class="exercise-description">
+                                    <p>Gunakan dataset yang telah di-generate untuk menjawab pertanyaan berikut:</p>
+                                </div>
+                                <div class="exercise-questions">
+                                    <div class="exercise-item">
+                                        <p><strong>1. Kategori produk apa yang memiliki penjualan terbanyak?</strong></p>
+                                        <input type="text" class="exercise-input" id="answer1" placeholder="Jawaban Anda...">
+                                    </div>
+                                    <div class="exercise-item">
+                                        <p><strong>2. Berapa rata-rata harga produk di kategori Fashion?</strong></p>
+                                        <input type="text" class="exercise-input" id="answer2" placeholder="Jawaban Anda...">
+                                    </div>
+                                </div>
+                                <button onclick="checkAdvancedAnswers()" class="btn-primary">✅ Periksa Jawaban</button>
+                                <div id="advancedFeedback" class="exercise-feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Refleksi -->
+                    <div class="pedagogy-section">
+                        <h4 class="section-title">🤔 Refleksi</h4>
+                        <div class="section-content">
+                            <div class="reflection-questions">
+                                <div class="reflection-item">
+                                    <p><strong>Bagaimana pengalaman kalian dalam menganalisis data besar?</strong></p>
+                                    <textarea class="reflection-input" placeholder="Bagikan pengalaman kalian..." rows="3"></textarea>
+                                </div>
+                                <div class="reflection-item">
+                                    <p><strong>Profesi apa yang membutuhkan kemampuan analisis data seperti ini?</strong></p>
+                                    <textarea class="reflection-input" placeholder="Sebutkan profesi yang relevan..." rows="3"></textarea>
+                                </div>
+                                <div class="reflection-item">
+                                    <p><strong>Bagaimana kalian akan menggunakan skill ini di masa depan?</strong></p>
+                                    <textarea class="reflection-input" placeholder="Rencana pengembangan skill..." rows="3"></textarea>
+                                </div>
+                            </div>
+                            <button onclick="saveReflection(12, 1)" class="btn-primary">💾 Simpan Refleksi</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <!-- Progress Sidebar -->
+    <div id="progressSidebar" class="progress-sidebar">
+        <div class="progress-header">
+            <h3>Progress Pembelajaran</h3>
+            <button id="closeSidebar" class="btn-icon">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="progress-content">
+            <div class="progress-section">
+                <h4>Kelas X</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-grade="10"></div>
+                </div>
+                <div class="progress-details" id="progress-10"></div>
+            </div>
+            <div class="progress-section">
+                <h4>Kelas XI</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-grade="11"></div>
+                </div>
+                <div class="progress-details" id="progress-11"></div>
+            </div>
+            <div class="progress-section">
+                <h4>Kelas XII</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-grade="12"></div>
+                </div>
+                <div class="progress-details" id="progress-12"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Progress Button -->
+    <button id="progressToggle" class="floating-btn" title="Lihat Progress">
+        <i data-lucide="bar-chart-3"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
